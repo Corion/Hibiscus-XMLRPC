@@ -48,7 +48,13 @@ WriteMakefile1(
 
     PREREQ_PM => {
         'Carp' => 0,
-        'Template::Provider' => 0,
+        'Filter::signatures' => 0,
+        'URI' => 0,
+        'XMLRPC::PurePerl' => 0, # XML::RPC support is in the works
+        
+        'HTTP::Tiny' => 0,
+        'Future'     => 0,
+        'Moo'        => 2, # alternatively, Moo::Lax
    },
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean               => { FILES => 'Hibiscus-XMLRPC-*' },
