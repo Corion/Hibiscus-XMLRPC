@@ -22,13 +22,29 @@ has 'ua' => (
 );
 
 has 'url' => (
+    is => 'ro',
+    default => sub { URI->new('https://127.0.0.1:8080/xmlrpc/') },
+);
+
+has 'user' => (
     is => 'rw',
-    default => 'https://127.0.0.1:8080/xmlrpc',
+);
+
+has 'password' => (
+    is => 'rw',
 );
 
 sub call($self,$method,@params) {
     my $payload = $self->encode_request($method,@params);
-    $self->ua->post($self->url, {
+
+    my $url = $self->url;
+    my( $userinfo ) = $url->userinfo || '';
+    my( $user, $password ) = split /:/, $userinfo;
+    $user ||= $self->user;
+    $password ||= $self->password;
+    $url->userinfo( "$user:$password" );
+
+    $self->ua->post($url, {
         headers => {
             'Content-Type' => 'text/xml',
         },
@@ -48,19 +64,13 @@ sub decode_result($self,$result) {
     XMLRPC::PurePerl->decode_xmlrpc($result->{content})
 }
 
-sub BUILD($class, $args) {
-    
+sub BUILDARGS($class, %options) {
     # Upgrade strings to URI::URL
-    if( ! ref $args->{ url }) {
-        $args->{ url } = URI->new( $args->{ url } );
+    if( $options{ url } and not ref $options{ url }) {
+        $options{ url } = URI->new( $options{ url } );
     };
     
-    if( defined( my $user = delete $args->{ user })) {
-        $args->{ url }->user( $user );
-    };
-    if( defined( my $pass = delete $args->{ password })) {
-        $args->{ url }->password( $pass );
-    };
+    \%options
 }
 
 =head2 C<< ->transactions %filter >>
