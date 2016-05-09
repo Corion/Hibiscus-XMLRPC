@@ -1,11 +1,20 @@
 package Hibiscus::XMLRPC;
 use strict;
 use Moo 2; # or Moo::Lax if you can't have Moo v2
-#use Filter::signatures;
+use Filter::signatures;
 no warnings 'experimental';
 use feature 'signatures';
 use URI;
 use XMLRPC::PurePerl;
+
+use vars qw($VERSION);
+$VERSION = '0.01';
+
+=head1 NAME
+
+Hibiscus::XMLRPC - talk to Hibiscus via XMLRPC
+
+=cut
 
 has 'ua' => (
     is => 'rw',
