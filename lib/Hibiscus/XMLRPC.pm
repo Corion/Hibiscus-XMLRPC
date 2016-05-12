@@ -143,8 +143,10 @@ C<hibiscus.xmlrpc.umsatz> to be enabled.
 
 Restart Jameica once more
 
+=back
+
 =head1 SEE ALSO
 
 L<https://www.willuhn.de/wiki/doku.php?id=develop:xmlrpc>
 
-=back
+=cut
