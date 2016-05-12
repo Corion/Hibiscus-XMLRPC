@@ -17,8 +17,8 @@ Hibiscus::XMLRPC - talk to Hibiscus via XMLRPC
 =cut
 
 has 'ua' => (
-    is => 'rw',
-    default => sub { require Future::HTTP::Tiny; Future::HTTP::Tiny->new },
+    is => 'lazy',
+    default => sub { require Future::HTTP; Future::HTTP->new },
 );
 
 has 'url' => (
