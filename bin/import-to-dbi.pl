@@ -3,8 +3,10 @@ use strict;
 use Hibiscus::XMLRPC;
 use DBI;
 use Getopt::Long;
-#use DBIx::RunSQL;
 use POSIX qw(strftime);
+
+use vars '$VERSION';
+$VERSION = '0.01';
 
 GetOptions(
     'create'   => \my $create,
