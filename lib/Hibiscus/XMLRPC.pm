@@ -1,7 +1,7 @@
 package Hibiscus::XMLRPC;
 use strict;
 use Moo 2; # or Moo::Lax if you can't have Moo v2
-use Filter::signatures;
+use Filter::signatures; # so the subroutine signatures work on Perls that don't support them
 no warnings 'experimental';
 use feature 'signatures';
 use URI;
@@ -44,14 +44,15 @@ sub call($self,$method,@params) {
     $password ||= $self->password;
     $url->userinfo( "$user:$password" );
 
-    $self->ua->post($url, {
+    $self->ua->http_post(
+        $url,
+        $payload,
         headers => {
             'Content-Type' => 'text/xml',
         },
-        content => $payload,
-    })->then(sub($result) {
+    )->then(sub($body, $headers) {
         Future->done(
-            $self->decode_result($result)
+            $self->decode_result($body)
         );
     });
 }
@@ -60,8 +61,8 @@ sub encode_request($self,$method,@params) {
     XMLRPC::PurePerl->encode_call_xmlrpc($method,@params)
 }
 
-sub decode_result($self,$result) {
-    XMLRPC::PurePerl->decode_xmlrpc($result->{content})
+sub decode_result($self,$body) {
+    XMLRPC::PurePerl->decode_xmlrpc($body)
 }
 
 sub BUILDARGS($class, %options) {
