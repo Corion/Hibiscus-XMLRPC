@@ -15,5 +15,5 @@ Makefile$
 ^cpan/
 ^MYMETA
 ^.releaserc
-^Filter-signatures-.*/
-^Filter-signatures-.*.tar.gz$
+^Hibiscus-XMLRPC-.*/
+^Hibiscus-XMLRPC-.*.tar.gz$

@@ -1,8 +1,11 @@
 .gitignore
+bin/import-to-dbi.pl
 Changes
+lib/Hibiscus/XMLRPC.pm
 Makefile.PL
 MANIFEST			This list of files
 MANIFEST.SKIP
+max.sqlite
 META.json
 META.yml
 README
