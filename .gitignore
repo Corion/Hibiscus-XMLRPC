@@ -10,3 +10,4 @@ Hibiscus-XMLRPC-*/
 cover_db
 firefox-versions/
 MYMETA.*
+*.sqlite
