@@ -14,6 +14,18 @@ $VERSION = '0.01';
 
 Hibiscus::XMLRPC - talk to Hibiscus via XMLRPC
 
+=head1 SYNOPSIS
+
+    my $client = Hibiscus::XMLRPC->new(
+        url => 'https://127.0.0.1:8080/xmlrpc/', # the default
+        user     => $hbciuser,
+        password => $hbcipass,
+    );
+    my $tr = $client->transactions()->get;
+    for my $transaction (@$tr) {
+        ...
+    }
+
 =cut
 
 has 'ua' => (
@@ -149,5 +161,33 @@ Restart Jameica once more
 =head1 SEE ALSO
 
 L<https://www.willuhn.de/wiki/doku.php?id=develop:xmlrpc>
+
+=head1 REPOSITORY
+
+The public repository of this module is 
+L<http://github.com/Corion/hibiscus-xmlrpc>.
+
+=head1 SUPPORT
+
+The public support forum of this module is
+L<https://perlmonks.org/>.
+
+=head1 BUG TRACKER
+
+Please report bugs in this module via the RT CPAN bug queue at
+L<https://rt.cpan.org/Public/Dist/Display.html?Name=Hibiscus-XMLRPC>
+or via mail to L<hibiscus-xmlrpc-Bugs@rt.cpan.org>.
+
+=head1 AUTHOR
+
+Max Maischein C<corion@cpan.org>
+
+=head1 COPYRIGHT (c)
+
+Copyright 2016 by Max Maischein C<corion@cpan.org>.
+
+=head1 LICENSE
+
+This module is released under the same terms as Perl itself.
 
 =cut
