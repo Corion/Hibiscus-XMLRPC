@@ -4,8 +4,8 @@ Makefile.old
 *.bak
 pm_to_blib
 blib/
-Filter-signatures-*
-Filter-signatures-*/
+Hibiscus-XMLRPC-*
+Hibiscus-XMLRPC-*/
 .releaserc
 cover_db
 firefox-versions/
