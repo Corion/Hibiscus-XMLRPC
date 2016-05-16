@@ -2,6 +2,18 @@
 
 Hibiscus::XMLRPC - talk to Hibiscus via XMLRPC
 
+# SYNOPSIS
+
+    my $client = Hibiscus::XMLRPC->new(
+        url => 'https://127.0.0.1:8080/xmlrpc/', # the default
+        user     => $hbciuser,
+        password => $hbcipass,
+    );
+    my $tr = $client->transactions()->get;
+    for my $transaction (@$tr) {
+        ...
+    }
+
 ## `->transactions %filter`
 
     my $transactions = $jameica->transactions(
@@ -50,3 +62,31 @@ Restart after every prerequisite.
 # SEE ALSO
 
 [https://www.willuhn.de/wiki/doku.php?id=develop:xmlrpc](https://www.willuhn.de/wiki/doku.php?id=develop:xmlrpc)
+
+# REPOSITORY
+
+The public repository of this module is 
+[http://github.com/Corion/hibiscus-xmlrpc](http://github.com/Corion/hibiscus-xmlrpc).
+
+# SUPPORT
+
+The public support forum of this module is
+[https://perlmonks.org/](https://perlmonks.org/).
+
+# BUG TRACKER
+
+Please report bugs in this module via the RT CPAN bug queue at
+[https://rt.cpan.org/Public/Dist/Display.html?Name=Hibiscus-XMLRPC](https://rt.cpan.org/Public/Dist/Display.html?Name=Hibiscus-XMLRPC)
+or via mail to [hibiscus-xmlrpc-Bugs@rt.cpan.org](https://metacpan.org/pod/hibiscus-xmlrpc-Bugs@rt.cpan.org).
+
+# AUTHOR
+
+Max Maischein `corion@cpan.org`
+
+# COPYRIGHT (c)
+
+Copyright 2016 by Max Maischein `corion@cpan.org`.
+
+# LICENSE
+
+This module is released under the same terms as Perl itself.
