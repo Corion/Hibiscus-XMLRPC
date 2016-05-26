@@ -6,7 +6,7 @@ use Getopt::Long;
 use POSIX qw(strftime);
 
 use vars '$VERSION';
-$VERSION = '0.01';
+$VERSION = '0.02';
 
 GetOptions(
     'create'   => \my $create,
