@@ -48,7 +48,7 @@ WriteMakefile1(
 
     PREREQ_PM => {
         'Carp' => 0,
-        'Filter::signatures' => 0,
+        'Filter::signatures' => '0.03',
         'URI'          => 0,
         'XMLRPC::PurePerl' => 0, # XML::RPC support is in the works
         'Future::HTTP' => 0,

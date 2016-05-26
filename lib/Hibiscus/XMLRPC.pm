@@ -2,7 +2,7 @@ package Hibiscus::XMLRPC;
 use strict;
 use Moo 2; # or Moo::Lax if you can't have Moo v2
 use Filter::signatures; # so the subroutine signatures work on Perls that don't support them
-no warnings 'experimental';
+no warnings 'experimental::signatures';
 use feature 'signatures';
 use URI;
 use XMLRPC::PurePerl;
